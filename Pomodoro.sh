@@ -32,8 +32,11 @@ header(){
 	echo "#   Big pause time: $PAUSE_TIME minutes   #"
 	echo "==================================="
 	echo ""
-	echo -e "        It's Time to: $STATE"
+	echo -e "        It's Time to: $STATE"	
 	echo ""
+	echo "            ========="
+	echo -e "            | ${GREEN}${BOLD}$1${NC}${NC} |"
+	echo "            ========="
 }
 
 while true
@@ -65,16 +68,19 @@ do
 			sleep 1
 			clear
 			if [ $MINUTES -lt 10 ]; then
-				if [ $SECONDS -lt 10 ]; then				
-					header
-					echo -e "             ${GREEN}${BOLD}0$MINUTES:0$SECONDS${NC}${NC}"
-				else				
-					header
-					echo -e "             ${GREEN}${BOLD}0$MINUTES:$SECONDS${NC}${NC}"
+				if [ $SECONDS -lt 10 ]; then
+					TIME="0$MINUTES:0$SECONDS"
+					header $TIME
+					#echo -e "             ${GREEN}${BOLD}0$MINUTES:0$SECONDS${NC}${NC}"
+				else	
+					TIME="0$MINUTES:$SECONDS"			
+					header $TIME
+					#echo -e "             ${GREEN}${BOLD}0$MINUTES:$SECONDS${NC}${NC}"
 				fi
-			else				
-				header
-				echo -e "             ${GREEN}${BOLD}$MINUTES:$SECONDS${NC}${NC}"
+			else		
+				TIME="$MINUTES:$SECONDS"		
+				header $TIME
+				#echo -e "             ${GREEN}${BOLD}$MINUTES:$SECONDS${NC}${NC}"
 			fi	
 
 		done
