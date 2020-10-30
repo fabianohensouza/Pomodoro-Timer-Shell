@@ -34,7 +34,6 @@ header(){
 	echo ""
 	echo -e "        It's Time to: $STATE"
 	echo ""
-	echo "             TEMPO"
 }
 
 while true
